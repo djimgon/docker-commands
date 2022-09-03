@@ -17,3 +17,11 @@ REGISTRY=goohunter IMAGE_TAG=master-1 BUILD_NUMBER=1 make push
 
 # Как внести изменения в composer
 docker-compose run api-php-cli composer dump-autoload
+
+# Как проверить работу nginx
+docker-compose exec api curl --fail http://127.0.0.1/health
+#
+location /health {#
+    add_header Content-Type text/plain;#
+    return 200 'alive';#
+}#
